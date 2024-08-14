@@ -129,7 +129,8 @@ The paper below presents the preliminary concept of `UniTSA`, specifically intro
 @inproceedings{wang2022adlight,
   title={{ADLight}: A Universal Approach of Traffic Signal Control with Augmented Data Using Reinforcement Learning},
   author={Wang, Maonan and Xu, Yutong and Xiong, Xi and Kan, Yuheng and Xu, Chengcheng and Pun, Man-On},
-  booktitle={2023 Transportation Research Board Annual Meeting (102nd TRB)},
+  booktitle={2023 Transportation Research Board Annual Meeting (102nd TRB)},![Uploading image.png…]()
+
   year={2023},
 }
 ```
