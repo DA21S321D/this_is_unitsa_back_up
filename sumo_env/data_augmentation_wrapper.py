@@ -39,7 +39,7 @@ class data_augmentation_wrapper(gym.ObservationWrapper):
         self.is_flow_scale = is_flow_scale
         self.is_noise = is_noise
         self.is_mask = is_mask
-        self._phase_num = self.observation_space.shape[-2]
+        self._phase_num = self.observation_space.shape[-2]#为什么
         assert self._phase_num == 12, '相位数是 12.'
         self._idx = list(range(self._phase_num))
         

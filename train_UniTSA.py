@@ -24,7 +24,7 @@ path_convert = get_abs_path(__file__)
 # set_logger(path_convert('./'), log_level="INFO")
 
 def create_env(params, CPU_NUMS=12):
-    env = SubprocVecEnv([make_env(env_index=f'{i}', **params) for i in range(CPU_NUMS)])
+    env = SubprocVecEnv([make_env(env_index=f'{i}', **params) for i in range(CPU_NUMS)]) #解包语法params
     env = VecNormalize(env, norm_obs=False, norm_reward=True)
     return env
 
@@ -34,6 +34,7 @@ def train_model(env, tensorboard_path, callback_list):
         features_extractor_class=EAttention,
         features_extractor_kwargs=dict(features_dim=32),
     )
+    #https://stable-baselines3.readthedocs.io/en/master/guide/custom_policy.html#custom-feature-extractor
     model = PPO(
         "MlpPolicy", 
         env, 
@@ -73,7 +74,7 @@ if __name__ == '__main__':
         },
         'env_dict': SUMO_CONFIG,
         'num_seconds': 3600,
-        'use_gui': False,
+        'use_gui': True,
         'log_file': log_path,
         'is_data_aug': IS_DATA_AUG
     }

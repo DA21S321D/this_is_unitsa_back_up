@@ -11,7 +11,7 @@ from stable_baselines3.common.monitor import Monitor
 from .tsc_env import TSCEnvironment
 from .base_wrapper import base_wrapper
 from .data_augmentation_wrapper import data_augmentation_wrapper
-
+#https://stable-baselines3.readthedocs.io/en/master/guide/custom_env.html
 def make_env(
         root_folder:str,
         init_config: Dict[str,str],
@@ -20,6 +20,7 @@ def make_env(
         log_file:str, env_index:int,
         is_data_aug:bool = False
     ):
+    print("成功初始化环境")
     def _init() -> gym.Env:
         init_tls_id,init_sumo_cfg = init_config['tls_id'], init_config['sumocfg']
 
@@ -42,7 +43,8 @@ def make_env(
         # State Augmentation Methods
         if is_data_aug:
             tsc_wrapper = data_augmentation_wrapper(tsc_wrapper)
-            
-        return Monitor(tsc_wrapper, filename=f'{log_file}/{env_index}')
-    
-    return _init
+        print('tsc_wrapper type', type(tsc_wrapper))
+        return tsc_wrapper
+    env = _init()
+    print('_init type',type(env))
+    return env
